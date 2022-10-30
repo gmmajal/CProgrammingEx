@@ -1,6 +1,14 @@
 #include <stdio.h>
 #include <math.h>
 
+/*
+ * The function integrated is x*log(x).
+ * The upper and lower limits of integration
+ * are 1 and 0. A singularity appears at the 
+ * lower integration limit. A small increment is added
+ * in order to execute the quadrature at the lower limit.
+ * */
+
 double f(double x){
 	return x*log(x);
 }
