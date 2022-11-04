@@ -55,7 +55,7 @@ void rowEchelon(double** A, double* b, int rowIndex, int size){
     double pivot = A[rowIndex][rowIndex];
     for (int i=rowIndex+1;i<size;++i){
         double multiplier=A[i][rowIndex]/pivot;
-        for(int j=rowIndex;j<size;++j){
+        for(int j=rowIndex+1;j<size;++j){
             A[i][j] =  A[i][j] - (multiplier*A[rowIndex][j]);
         }
         b[i] = b[i] - (multiplier*b[rowIndex]);
