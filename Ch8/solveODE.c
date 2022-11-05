@@ -1,6 +1,15 @@
 #include <stdio.h>
 #include <math.h>
 
+/**
+ * This program solves the ODE
+ * y'=-yx**2, with y(0)=1 and 0<=x<=1.
+ * The Euler method and Runge-Kutta method
+ * are compared with the exact solution in a
+ * subsequent plot generated in gnuplot.
+*/
+
+
 double f(double x, double y){
     return -pow(x,2)*y;
 }
@@ -13,7 +22,8 @@ int main(){
     double h = 0.1;
     FILE* fp1;
     fp1 = fopen("Euler.dat","w");
-    fprintf(fp1,"#%-15s %-15s\n","x","y");
+    fprintf(fp1,"%-15s\n","#The solution using Euler");
+    fprintf(fp1,"%-15s %-15s\n","#x","y");
     for(int i=0;i<=10;++i){
         fprintf(fp1,"%-15lf %-15lf\n",x_Eul,y_Eul);
         y_Eul = y_Eul + h*f(x_Eul,y_Eul);
@@ -24,7 +34,8 @@ int main(){
     //RK4 Block
     FILE* fp2;
     fp2 = fopen("RK4.dat","w");
-    fprintf(fp2,"#%-15s %-15s\n","x","y");
+    fprintf(fp2,"%-15s\n","#The solution using RK4");
+    fprintf(fp2,"%-15s %-15s\n","#x","y");
     for(int i=0;i<=10;++i){
         fprintf(fp2,"%-15lf %-15lf\n",x_RK4,y_RK4);
         double k1 = f(x_RK4,y_RK4);
@@ -39,7 +50,8 @@ int main(){
     //exact solution block
     FILE* fp3;
     fp3 = fopen("exact.dat","w");
-    fprintf(fp3,"#%-15s %-15s\n","x","y");
+    fprintf(fp3,"%-15s\n","#The exact solution exp(-x^3/3)");
+    fprintf(fp3,"%-15s %-15s\n","#x","y");
     for(int i=0;i<=10;++i){
         fprintf(fp3,"%-15lf %-15lf\n",x_exact,y_exact);
         x_exact = x_exact + h;
